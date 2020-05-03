@@ -84,7 +84,9 @@ func (i *UI) Ask(query string, opts *Options) (string, error) {
 	}
 
 	// Insert the new line for next output
-	fmt.Fprintf(i.Writer, "\n")
+	if !opts.SkipNewline {
+		fmt.Fprintf(i.Writer, "\n")
+	}
 
 	return resultStr, resultErr
 }

@@ -125,6 +125,9 @@ type Options struct {
 	// ValidateFunc is function to do extra validation of user
 	// input string. By default, it does nothing (just returns nil).
 	ValidateFunc ValidateFunc
+
+	// An extra new line will be printed after the prompt unless SkipNewline is set to true
+	SkipNewline bool
 }
 
 // validateFunc returns ValidateFunc. If it's specified by
