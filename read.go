@@ -51,11 +51,11 @@ func (i *UI) read(opts *readOptions) (string, error) {
 			// brute force for the moment
 			resultStr = strings.TrimSuffix(line, "\n")
 		}
-	}()
 
-	if runtime.GOOS == "windows" {
-		resultStr = strings.ReplaceAll(resultStr, "\r", "")
-	}
+		if runtime.GOOS == "windows" {
+			resultStr = strings.ReplaceAll(resultStr, "\r", "")
+		}
+	}()
 
 	select {
 	case <-sigCh:
