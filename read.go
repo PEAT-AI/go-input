@@ -5,6 +5,7 @@ import (
 	"io"
 	"os"
 	"os/signal"
+	"runtime"
 	"strings"
 )
 
@@ -51,6 +52,10 @@ func (i *UI) read(opts *readOptions) (string, error) {
 			resultStr = strings.TrimSuffix(line, "\n")
 		}
 	}()
+
+	if runtime.GOOS == "windows" {
+		resultStr = strings.ReplaceAll(resultStr, "\r", "")
+	}
 
 	select {
 	case <-sigCh:
